@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ray Martin — Vocalist / Bass / Nashville</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Oswald:wght@200;300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:      #0e0b07;
+  --tobacco:  #1a1108;
+  --bourbon:  #271608;
+  --amber:    #c8841a;
+  --gold:     #e8a832;
+  --rust:     #7a2e0e;
+  --cream:    #ede0c8;
+  --aged:     #c4aa84;
+  --smoke:    #7a6e5a;
+  --paper:    #d4b896;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.055;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* NAV */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:500;
+  display: flex; justify-content:space-between; align-items:center;
+  padding: 1.1rem 3rem;
+  background: linear-gradient(to bottom, rgba(10,7,3,0.97) 0%, transparent 100%);
+}
+.nav-wordmark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; letter-spacing: 0.18em; color: var(--amber);
+  text-decoration: none;
+}
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
+.nav-links a {
+  font-family: 'Oswald', sans-serif; font-weight:300;
+  font-size: 0.72rem; letter-spacing:0.3em; text-transform:uppercase;
+  color: var(--aged); text-decoration:none; transition: color 0.25s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero-text-col {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 7rem 3rem 5rem 5rem;
+  position: relative; z-index: 2;
+  background: linear-gradient(to right, rgba(14,11,7,0.98) 60%, rgba(14,11,7,0.7) 100%);
+}
+.poster-rule { width: 100%; height: 3px; background: linear-gradient(to right, var(--amber), transparent); margin-bottom: 1.2rem; }
+.poster-rule.thin { height: 1px; background: linear-gradient(to right, rgba(200,132,26,0.5), transparent); margin-bottom: 0.6rem; margin-top:0.6rem; }
+.hero-eyebrow {
+  font-family: 'Oswald', sans-serif; font-weight:200; font-size: 0.72rem;
+  letter-spacing:0.55em; text-transform:uppercase; color: var(--amber);
+  opacity:0; animation: fadeUp 0.9s ease 0.2s forwards; margin-bottom: 0.8rem;
+}
+.hero-name { font-family: 'Bebas Neue', sans-serif; line-height: 0.88; opacity:0; animation: fadeUp 0.9s ease 0.4s forwards; }
+.hero-name .first { display: block; font-size: clamp(5rem, 9vw, 9rem); color: var(--cream); letter-spacing: 0.04em; }
+.hero-name .last  { display: block; font-size: clamp(5rem, 9vw, 9rem); color: var(--amber); letter-spacing: 0.04em; }
+.hero-banner {
+  margin-top: 1rem; background: var(--amber); color: var(--ink);
+  font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; letter-spacing: 0.4em;
+  padding: 0.4rem 0.8rem; display: inline-block; opacity:0; animation: fadeUp 0.9s ease 0.55s forwards;
+}
+.hero-tagline {
+  font-family: 'Special Elite', cursive; font-size: 0.95rem; color: var(--smoke);
+  letter-spacing: 0.06em; margin-top: 1.5rem; margin-bottom: 2rem;
+  opacity:0; animation: fadeUp 0.9s ease 0.7s forwards; font-style: italic;
+}
+.hero-ctas { display:flex; gap:0.8rem; flex-wrap:wrap; opacity:0; animation: fadeUp 0.9s ease 0.85s forwards; }
+.btn-primary {
+  font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.25em;
+  color: var(--ink); background: var(--amber); border:none;
+  padding: 0.75rem 2rem; text-decoration:none;
+  transition: background 0.25s, transform 0.2s; cursor:pointer; display:inline-block;
+}
+.btn-primary:hover { background:var(--gold); transform:translateY(-2px); }
+.btn-ghost {
+  font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.25em;
+  color:var(--aged); border: 1px solid rgba(196,170,132,0.35);
+  padding: 0.75rem 2rem; text-decoration:none;
+  transition: border-color 0.25s, color 0.25s; cursor:pointer; display:inline-block;
+}
+.btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+.hero-photo-col { position: relative; overflow: hidden; }
+.hero-photo-col img.hero-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top; z-index: 0; display: block;
+}
+.hero-photo-col .photo-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to left, rgba(14,11,7,0.15) 0%, rgba(14,11,7,0.8) 100%),
+    linear-gradient(to bottom, rgba(14,11,7,0.0) 0%, rgba(14,11,7,0.65) 100%);
+}
+.vinyl {
+  position: absolute; top:2rem; right:2rem; width: 200px; height:200px; border-radius:50%;
+  background: radial-gradient(circle at center, #1a1108 16%, #0d0a06 17%, #0a0806 18%, #1a1108 34%, #0d0a06 35%, #0a0806 36%, #1a1108 54%, #0d0a06 55%, #0a0806 56%, #1e1408 100%);
+  opacity: 0.55; animation: spin 25s linear infinite; box-shadow: 0 0 50px rgba(200,132,26,0.1); z-index: 2;
+}
+.vinyl::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:38px; height:38px; border-radius:50%; background: radial-gradient(circle, var(--amber) 0%, #6b4010 100%); opacity:0.8; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* BAND STRIP */
+.band {
+  background: var(--amber); padding: 0.6rem 2rem;
+  display: flex; align-items: center; gap: 1.5rem; overflow: hidden;
+}
+.band-text { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.35em; color:var(--ink); white-space:nowrap; flex-shrink:0; }
+.band-rule { flex:1; min-width:0; height:1px; background:rgba(14,11,7,0.25); }
+
+/* ══════════════════════════════
+   ABOUT — photo album corners
+══════════════════════════════ */
+.about {
+  display:grid; grid-template-columns:1fr 1fr;
+  max-width:1300px; margin:0 auto;
+  padding:6rem 5rem; gap:5rem; align-items:center;
+}
+.about-photo-frame {
+  aspect-ratio: 3/4;
+  position: relative;
+  /* aged paper background, like a photo album page */
+  background: #1c1208;
+  padding: 18px;
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.6),
+    inset 0 0 30px rgba(0,0,0,0.4);
+}
+/* the actual photo inside */
+.about-photo-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+  display: block;
+  filter: sepia(0.08);
+}
+
+/* photo album corner tabs — all four corners */
+.photo-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  z-index: 10;
+}
+.photo-corner::before,
+.photo-corner::after {
+  content: '';
+  position: absolute;
+  background: var(--aged);
+  opacity: 0.75;
+}
+/* horizontal bar of the corner tab */
+.photo-corner::before {
+  width: 100%;
+  height: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* vertical bar of the corner tab */
+.photo-corner::after {
+  width: 6px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.photo-corner-tl { top: 4px;  left: 4px; }
+.photo-corner-tr { top: 4px;  right: 4px; transform: scaleX(-1); }
+.photo-corner-bl { bottom: 4px; left: 4px; transform: scaleY(-1); }
+.photo-corner-br { bottom: 4px; right: 4px; transform: scale(-1); }
+
+.about-text h2 {
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:clamp(2.2rem,3.5vw,3.2rem); line-height:1.1;
+  color:var(--cream); margin-bottom:2rem;
+}
+.about-text h2 em { font-style:italic; color:var(--gold); }
+.about-text p { font-size:1rem; line-height:1.85; color:var(--aged); margin-bottom:1.4rem; }
+
+.influence-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.8rem; }
+.tag {
+  font-family:'Oswald',sans-serif; font-weight:300; font-size:0.68rem;
+  letter-spacing:0.22em; text-transform:uppercase;
+  border:1px solid rgba(200,132,26,0.4); color:var(--amber);
+  padding:0.28rem 0.7rem;
+}
+.ig-link {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  font-family:'Oswald',sans-serif; font-weight:300; font-size:0.78rem;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--smoke); text-decoration:none; margin-top:1.5rem; transition:color 0.25s;
+}
+.ig-link:hover { color:var(--gold); }
+
+/* ══════════════════════════════
+   PHOTO GALLERY — scattered on table
+══════════════════════════════ */
+.gallery {
+  background: var(--tobacco);
+  padding: 5rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.gallery::before {
+  /* subtle wood grain / table texture */
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    92deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.012) 40px,
+    rgba(255,255,255,0.012) 41px
+  );
+  pointer-events: none;
+}
+
+.gallery-scatter {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  min-height: 500px;
+}
+
+.gallery-photo {
+  position: relative;
+  /* aged photo paper */
+  background: #e8dcc8;
+  padding: 10px 10px 32px 10px;
+  box-shadow:
+    0 6px 25px rgba(0,0,0,0.55),
+    0 2px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s;
+  flex-shrink: 0;
+}
+.gallery-photo:hover {
+  transform: scale(1.06) rotate(0deg) !important;
+  box-shadow: 0 16px 45px rgba(0,0,0,0.7), 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+.gallery-photo img {
+  display: block;
+  width: 220px;
+  height: 280px;
+  object-fit: cover;
+  object-position: center top;
+  filter: sepia(0.1) contrast(1.05);
+}
+/* caption strip at bottom of each photo */
+.gallery-photo .photo-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.65rem;
+  color: #5a4a30;
+  letter-spacing: 0.08em;
+  background: #e8dcc8;
+}
+
+/* album corner tabs on gallery photos too */
+.gallery-photo .photo-corner {
+  width: 18px; height: 18px;
+}
+.gallery-photo .photo-corner::before { height: 4px; }
+.gallery-photo .photo-corner::after  { width: 4px; }
+.gallery-photo .photo-corner-tl { top: 2px; left: 2px; }
+.gallery-photo .photo-corner-tr { top: 2px; right: 2px; }
+.gallery-photo .photo-corner-bl { bottom: 36px; left: 2px; }
+.gallery-photo .photo-corner-br { bottom: 36px; right: 2px; }
+
+/* individual rotations — scattered look */
+.gallery-photo:nth-child(1) { transform: rotate(-3.5deg); }
+.gallery-photo:nth-child(2) { transform: rotate(2deg) translateY(15px); }
+.gallery-photo:nth-child(3) { transform: rotate(-1.5deg) translateY(-10px); }
+.gallery-photo:nth-child(4) { transform: rotate(4deg) translateY(8px); }
+.gallery-photo:nth-child(5) { transform: rotate(-2.5deg) translateY(-5px); }
+
+/* ══════════════════════════════
+   LIGHTBOX
+══════════════════════════════ */
+.lightbox {
+  display: none;
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(10,7,3,0.93);
+  align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 88vw; max-height: 88vh;
+  object-fit: contain;
+  box-shadow: 0 0 80px rgba(0,0,0,0.8);
+}
+.lightbox-close {
+  position: absolute; top: 1.5rem; right: 2rem;
+  font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+  color: var(--aged); cursor: pointer; letter-spacing: 0.1em;
+}
+.lightbox-close:hover { color: var(--gold); }
+
+/* MUSIC */
+.music { background: var(--bourbon); padding: 6rem 5rem; }
+.music-inner { max-width:1300px; margin:0 auto; }
+.section-heading {
+  font-family:'Playfair Display',serif; font-weight:900; font-style:italic;
+  font-size:clamp(2.5rem,4vw,3.5rem); color:var(--cream); margin-bottom:3rem;
+}
+.tracklist { border-top:1px solid rgba(196,170,132,0.1); }
+.track {
+  display:grid; grid-template-columns:2.5rem 1fr auto auto;
+  gap:1.5rem; align-items:center;
+  padding:1.1rem 0; border-bottom:1px solid rgba(196,170,132,0.07);
+}
+.track-n { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--smoke); }
+.track-info h3 { font-family:'Libre Baskerville',serif; font-size:1rem; color:var(--cream); }
+.track-info span { font-size:0.78rem; color:var(--smoke); font-family:'Oswald',sans-serif; letter-spacing:0.05em; }
+.track-dur { font-family:'Special Elite',cursive; font-size:0.85rem; color:var(--smoke); }
+.track-btn { width:30px; height:30px; border-radius:50%; border:1px solid rgba(200,132,26,0.35); display:flex; align-items:center; justify-content:center; color:var(--amber); cursor:pointer; }
+
+/* QUOTE */
+.quote-banner { background:var(--rust); padding:5rem 3rem; text-align:center; }
+.quote-text { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.3rem,2.5vw,1.9rem); color:var(--cream); max-width:800px; margin:0 auto 1.5rem; line-height:1.6; }
+.quote-attr { font-family:'Bebas Neue',sans-serif; letter-spacing:0.3em; color:var(--aged); font-size:0.9rem; }
+
+/* SHOWS */
+.shows { padding:6rem 5rem; max-width:1300px; margin:0 auto; }
+.show { display:grid; grid-template-columns:110px 1fr auto; gap:2rem; align-items:center; padding:1.4rem 0; border-bottom:1px solid rgba(196,170,132,0.07); }
+.show-date .dy { font-family:'Bebas Neue',sans-serif; font-size:3.2rem; color:var(--cream); line-height:0.9; display:block; }
+.show-info h3 { font-family:'Libre Baskerville',serif; font-size:1rem; color:var(--cream); }
+.show-info span { font-size:0.8rem; color:var(--smoke); font-family:'Oswald',sans-serif; letter-spacing:0.1em; }
+.show-tix { font-family:'Bebas Neue',sans-serif; font-size:0.85rem; letter-spacing:0.25em; color:var(--amber); border:1px solid rgba(200,132,26,0.4); padding:0.5rem 1.3rem; text-decoration:none; }
+.show-tix:hover { background:var(--amber); color:var(--ink); }
+
+/* CONTACT */
+.contact { background:var(--ink); padding:7rem 5rem; text-align:center; }
+.contact-inner { max-width:900px; margin:0 auto; }
+.contact h2 { font-family:'Playfair Display',serif; font-weight:900; font-style:italic; font-size:clamp(2rem,3vw,3rem); color:var(--cream); margin-bottom:3rem; }
+.contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.contact-card { border:1px solid rgba(196,170,132,0.1); padding:2rem 1.5rem; }
+.contact-card h3 { font-family:'Bebas Neue',sans-serif; font-size:0.85rem; letter-spacing:0.35em; color:var(--amber); margin-bottom:0.6rem; }
+.contact-card p { font-family:'Oswald',sans-serif; font-weight:300; font-size:0.9rem; color:var(--aged); }
+.contact-card a { color:var(--aged); text-decoration:none; transition:color 0.25s; }
+.contact-card a:hover { color:var(--gold); }
+
+/* FOOTER */
+footer { background:#080604; border-top:1px solid rgba(196,170,132,0.07); padding:5rem 2rem 4rem; display:flex; flex-direction:column; align-items:center; gap:3rem; text-align:center; }
+.footer-copy p { font-family:'Oswald',sans-serif; font-weight:200; font-size:0.75rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--smoke); }
+.footer-copy p span { color:var(--amber); }
+.social-row { display:flex; gap:2.5rem; flex-wrap:wrap; justify-content:center; }
+.social-row a { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:0.2em; color:var(--aged); text-decoration:none; transition:color 0.25s; }
+.social-row a:hover { color:var(--gold); }
+.npd-signature { display:flex; flex-direction:column; align-items:center; gap:0.7rem; opacity:0.8; text-decoration:none; margin-top:1rem; }
+.npd-signature:hover { opacity:1; }
+.npd-logo-box { width:26px; height:26px; border:1px solid var(--amber); display:flex; align-items:center; justify-content:center; position:relative; }
+.npd-logo-box span { font-family:'Bebas Neue',sans-serif; font-size:0.85rem; color:var(--amber); }
+.npd-logo-box::after { content:''; position:absolute; width:3px; height:3px; background:var(--amber); bottom:3px; right:3px; }
+.npd-text { font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--smoke); }
+.npd-text b { color:var(--aged); font-weight:400; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding:1rem 1.5rem; }
+  .nav-links { display:none; }
+  .hero { display:block; position:relative; min-height:100svh; }
+  .hero-photo-col { position:absolute; inset:0; display:block; }
+  .hero-photo-col img.hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; z-index:0; }
+  .hero-photo-col .photo-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(to top,rgba(14,11,7,1) 0%,rgba(14,11,7,0.88) 45%,rgba(14,11,7,0.35) 100%); }
+  .vinyl { display:none; }
+  .hero-text-col { position:relative; z-index:2; padding:7rem 1.5rem 4rem; background:none; min-height:100svh; display:flex; flex-direction:column; justify-content:flex-end; }
+  .hero-name .first,.hero-name .last { font-size:clamp(4rem,18vw,6rem); }
+  .hero-ctas { flex-direction:column; }
+  .btn-primary,.btn-ghost { text-align:center; width:100%; }
+  .band { gap:0.75rem; padding:0.6rem 1rem; }
+  .band-text { font-size:0.78rem; letter-spacing:0.2em; }
+  .about { grid-template-columns:1fr; padding:4rem 1.5rem; gap:2.5rem; }
+  .about-photo-frame { aspect-ratio:4/3; }
+  .gallery { padding:3rem 1rem; }
+  .gallery-scatter { gap:0.5rem; min-height:auto; }
+  .gallery-photo img { width:140px; height:180px; }
+  .music { padding:4rem 1.5rem; }
+  .shows { padding:4rem 1.5rem; }
+  .show { grid-template-columns:60px 1fr; gap:1rem; }
+  .show-tix { display:none; }
+  .contact { padding:4rem 1.5rem; }
+  .contact-grid { grid-template-columns:1fr; }
+  .quote-banner { padding:3.5rem 1.5rem; }
+}
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-wordmark">Ray Martin</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#shows">Shows</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-text-col">
+    <div class="poster-rule"></div>
+    <p class="hero-eyebrow">Nashville, Tennessee</p>
+    <h1 class="hero-name">
+      <span class="first">Ray</span>
+      <span class="last">Martin</span>
+    </h1>
+    <div class="hero-banner">Vocalist · Bass · Nashville</div>
+    <div class="poster-rule thin"></div>
+    <p class="hero-tagline">"The real stuff, played loud and played right."</p>
+    <div class="hero-ctas">
+      <a href="#music" class="btn-primary">Listen</a>
+      <a href="#contact" class="btn-ghost">Book Ray</a>
+    </div>
+  </div>
+  <div class="hero-photo-col">
+    <img class="hero-img" src="ray-hero.png" alt="Ray Martin performing live">
+    <div class="photo-overlay"></div>
+    <div class="vinyl"></div>
+  </div>
+</section>
+
+<div class="band">
+  <span class="band-text">Rock</span><div class="band-rule"></div>
+  <span class="band-text">Blues</span><div class="band-rule"></div>
+  <span class="band-text">Country</span><div class="band-rule"></div>
+  <span class="band-text">Nashville</span>
+</div>
+
+<section class="about" id="about">
+  <div class="about-photo-frame">
+    <span class="photo-corner photo-corner-tl"></span>
+    <span class="photo-corner photo-corner-tr"></span>
+    <span class="photo-corner photo-corner-bl"></span>
+    <span class="photo-corner photo-corner-br"></span>
+    <img src="ray-about.jpg" alt="Ray Martin">
+  </div>
+  <div class="about-text">
+    <h2>Voice, bass &amp; <em>soul</em><br>from the ground up.</h2>
+    <p>Ray Martin is a lead vocalist and bass player based in the Nashville area, bringing a vocal style that draws deep from the well of Gregg Allman, Warren Haynes, and Chris Stapleton — that place where rock, blues, country, and a touch of jazz all bleed into each other.</p>
+    <p>Whether holding down the low end or stepping to the mic, Ray brings feel first. Strong with background vocals, at home on any stage.</p>
+    <div class="influence-tags">
+      <span class="tag">Gregg Allman</span>
+      <span class="tag">Warren Haynes</span>
+      <span class="tag">Chris Stapleton</span>
+      <span class="tag">Rock</span>
+      <span class="tag">Blues</span>
+      <span class="tag">Country</span>
+      <span class="tag">Jazz</span>
+      <span class="tag">BGV</span>
+    </div>
+    <a class="ig-link" href="https://www.instagram.com/raymartin497/" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      @raymartin497
+    </a>
+  </div>
+</section>
+
+<!-- GALLERY — scattered photos -->
+<section class="gallery" id="gallery">
+  <div class="gallery-scatter">
+
+    <div class="gallery-photo" onclick="openLightbox(this)">
+      <span class="photo-corner photo-corner-tl"></span>
+      <span class="photo-corner photo-corner-tr"></span>
+      <span class="photo-corner photo-corner-bl"></span>
+      <span class="photo-corner photo-corner-br"></span>
+      <img src="ray-gallery-1.jpg" alt="Ray Martin live">
+      <div class="photo-label">Nashville</div>
+    </div>
+
+    <div class="gallery-photo" onclick="openLightbox(this)">
+      <span class="photo-corner photo-corner-tl"></span>
+      <span class="photo-corner photo-corner-tr"></span>
+      <span class="photo-corner photo-corner-bl"></span>
+      <span class="photo-corner photo-corner-br"></span>
+      <img src="ray-gallery-2.jpg" alt="Ray Martin live">
+      <div class="photo-label">On Stage</div>
+    </div>
+
+    <div class="gallery-photo" onclick="openLightbox(this)">
+      <span class="photo-corner photo-corner-tl"></span>
+      <span class="photo-corner photo-corner-tr"></span>
+      <span class="photo-corner photo-corner-bl"></span>
+      <span class="photo-corner photo-corner-br"></span>
+      <img src="ray-gallery-3.jpg" alt="Ray Martin live">
+      <div class="photo-label">Live</div>
+    </div>
+
+    <div class="gallery-photo" onclick="openLightbox(this)">
+      <span class="photo-corner photo-corner-tl"></span>
+      <span class="photo-corner photo-corner-tr"></span>
+      <span class="photo-corner photo-corner-bl"></span>
+      <span class="photo-corner photo-corner-br"></span>
+      <img src="ray-gallery-4.jpg" alt="Ray Martin live">
+      <div class="photo-label">The Low End</div>
+    </div>
+
+    <div class="gallery-photo" onclick="openLightbox(this)">
+      <span class="photo-corner photo-corner-tl"></span>
+      <span class="photo-corner photo-corner-tr"></span>
+      <span class="photo-corner photo-corner-bl"></span>
+      <span class="photo-corner photo-corner-br"></span>
+      <img src="ray-gallery-5.jpg" alt="Ray Martin live">
+      <div class="photo-label">Feel First</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">✕ Close</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<section class="music" id="music">
+  <div class="music-inner">
+    <h2 class="section-heading">The Music</h2>
+    <div class="tracklist">
+      <div class="track">
+        <span class="track-n">01</span>
+        <div class="track-info">
+          <h3>The Long Way Home</h3>
+          <span>Album / Single · 2024</span>
+        </div>
+        <span class="track-dur">4:22</span>
+        <div class="track-btn">▶</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-banner">
+  <p class="quote-text">"Vocal style in the feel of Gregg Allman, Warren Haynes, Chris Stapleton — rock, blues, country, some jazz. Great with BGV."</p>
+  <p class="quote-attr">— Ray Martin</p>
+</div>
+
+<section class="shows" id="shows">
+  <h2 class="section-heading">Upcoming Shows</h2>
+  <div class="show">
+    <div class="show-date"><span class="dy">TBA</span></div>
+    <div class="show-info">
+      <h3>Nashville, TN</h3>
+      <span>Dates coming soon — follow on Instagram for updates</span>
+    </div>
+    <a href="https://www.instagram.com/raymartin497/" class="show-tix" target="_blank" rel="noopener">Follow</a>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <h2>Get In Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-card"><h3>Booking</h3><p><a href="mailto:ray@martin.com">ray@martin.com</a></p></div>
+      <div class="contact-card"><h3>Instagram</h3><p><a href="https://www.instagram.com/raymartin497/" target="_blank" rel="noopener">@raymartin497</a></p></div>
+      <div class="contact-card"><h3>EPK</h3><p><a href="#">Download</a></p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy"><p>© 2026 <span>Ray Martin</span> · Nashville, TN</p></div>
+  <div class="social-row">
+    <a href="https://www.instagram.com/raymartin497/" target="_blank" rel="noopener">Instagram</a>
+    <a href="#">Facebook</a>
+    <a href="#">Spotify</a>
+    <a href="#">YouTube</a>
+  </div>
+  <a href="https://nullpointdesign.github.io" class="npd-signature">
+    <div class="npd-logo-box"><span>N</span></div>
+    <div class="npd-text">Site design by <b>Null Point Design</b></div>
+  </a>
+</footer>
+
+<script>
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
