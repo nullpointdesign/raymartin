@@ -365,6 +365,56 @@ nav {
 .show-info span { font-size:0.8rem; color:var(--smoke); font-family:'Oswald',sans-serif; letter-spacing:0.1em; }
 .show-tix { font-family:'Bebas Neue',sans-serif; font-size:0.85rem; letter-spacing:0.25em; color:var(--amber); border:1px solid rgba(200,132,26,0.4); padding:0.5rem 1.3rem; text-decoration:none; }
 .show-tix:hover { background:var(--amber); color:var(--ink); }
+  
+.show-with-flyer {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+}
+.show-with-flyer .show {
+  flex: 1;
+  border-bottom: none;
+  padding-top: 1.4rem;
+}
+.show-flyer-wrap {
+  flex-shrink: 0;
+  position: relative;
+  padding: 8px;
+  background: #f0e8d0;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  transform: rotate(2.5deg);
+  transition: transform 0.3s ease;
+}
+.show-flyer-wrap:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+/* tape strip across top */
+.show-flyer-wrap::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  background: rgba(255,240,180,0.55);
+  border: 1px solid rgba(200,180,100,0.3);
+  z-index: 2;
+}
+.show-flyer {
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .show-with-flyer {
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .show-flyer { width: 220px; }
+}
 
 /* CONTACT */
 .contact { background:var(--ink); padding:7rem 5rem; text-align:center; }
@@ -581,13 +631,22 @@ footer { background:#080604; border-top:1px solid rgba(196,170,132,0.07); paddin
 
 <section class="shows" id="shows">
   <h2 class="section-heading">Upcoming Shows</h2>
-  <div class="show">
-    <div class="show-date"><span class="dy">TBA</span></div>
-    <div class="show-info">
-      <h3>Nashville, TN</h3>
-      <span>Dates coming soon — follow on Instagram for updates</span>
+  <div class="show-with-flyer">
+    <div class="show">
+      <div class="show-date">
+        <span class="dy">06</span>
+        <span class="mo">Mar</span>
+      </div>
+      <div class="show-info">
+        <h3>Heroes Den</h3>
+        <span>1257 NW Broad Street · Murfreesboro, TN · Showtime 6:00 PM</span>
+        <br><span style="color:var(--amber); font-family:'Oswald',sans-serif; font-size:0.75rem; letter-spacing:0.15em;">Blues · Rock · Soul · Nashville</span>
+      </div>
+      <a href="#" class="show-tix">Tickets</a>
     </div>
-    <a href="https://www.instagram.com/raymartin497/" class="show-tix" target="_blank" rel="noopener">Follow</a>
+    <div class="show-flyer-wrap">
+      <img src="ray-show-march6.jpg" alt="Ray Martin at Heroes Den March 6" class="show-flyer">
+    </div>
   </div>
 </section>
 
