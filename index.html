@@ -261,8 +261,53 @@ nav {
 }
 .lightbox-close:hover { color: var(--gold); }
 
+/* BIO */
+.bio {
+  background: var(--bourbon);
+  padding: 8rem 5rem;
+}
+.bio-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.bio-inner .label {
+  font-family: 'Oswald', sans-serif; font-weight: 300;
+  font-size: 0.68rem; letter-spacing: 0.45em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 1.5rem; display: block;
+}
+.bio-inner p {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--aged);
+  margin-bottom: 1.8rem;
+}
+.bio-inner p:first-of-type {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.75;
+}
+.bio-cta {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(200,132,26,0.2);
+}
+.bio-cta-text {
+  font-family: 'Oswald', sans-serif; font-weight: 300;
+  font-size: 0.85rem; letter-spacing: 0.15em;
+  color: var(--smoke);
+}
+.bio-cta-text strong {
+  color: var(--aged);
+  font-weight: 400;
+}
+
 /* MUSIC */
-.music { background: var(--bourbon); padding: 6rem 5rem; }
+.music { background: var(--ink); padding: 6rem 5rem; }
 .music-inner { max-width:1300px; margin:0 auto; }
 .section-heading {
   font-family:'Playfair Display',serif; font-weight:900; font-style:italic;
@@ -287,7 +332,6 @@ nav {
 
 /* SHOWS */
 .shows { padding:6rem 5rem; max-width:1300px; margin:0 auto; }
-
 .show-featured {
   display: flex; align-items: flex-start; gap: 4rem;
   padding: 2.5rem 0 3rem;
@@ -399,6 +443,8 @@ footer { background:#080604; border-top:1px solid rgba(196,170,132,0.07); paddin
   .gallery { padding:3rem 1rem; }
   .gallery-scatter { gap:0.5rem; min-height:auto; }
   .gallery-photo img { width:140px; height:180px; }
+  .bio { padding:5rem 1.5rem; }
+  .bio-cta { flex-direction:column; align-items:flex-start; }
   .music { padding:4rem 1.5rem; }
   .shows { padding:4rem 1.5rem; }
   .show-featured { flex-direction:column; gap:2rem; align-items:center; }
@@ -511,6 +557,22 @@ footer { background:#080604; border-top:1px solid rgba(196,170,132,0.07); paddin
   <span class="lightbox-close">✕ Close</span>
   <img id="lightbox-img" src="" alt="">
 </div>
+
+<!-- BIO -->
+<section class="bio" id="bio">
+  <div class="bio-inner">
+    <span class="label">The Story · Nashville, TN</span>
+    <p>Nashville runs on feel. On the bassist who locks in before the click track starts, the vocalist who lifts a harmony without being asked, the musician who makes the song better just by being in the room. Raymond Martin is that musician.</p>
+    <p>A Nashville-based bassist and vocalist with years of regional stages behind him, Raymond has built a reputation for rock-solid rhythm, soulful feel, and the kind of instinctive musicianship that bands trust without thinking twice. He's laid down grooves and sung lead with the Southern Toast Band, fired up dance floors with the Stovetop Rhythm & Blues Band, and held the foundation for more Nashville acts than he can count. When you need someone who shows up prepared, locks in fast, and makes the song his first priority — Raymond is that guy.</p>
+    <p>He's also available for session work. Nashville was built on players who can walk into a studio cold, read a room in thirty seconds, and deliver exactly what a track needs — deep groove, clean execution, and the experience to know when to fill and when to stay out of the way. That's Raymond. If you're producing, arranging, or tracking and you need a bassist with feel and professionalism, he wants to hear from you.</p>
+    <p>And when he steps out front — solo acoustic, just a voice and a guitar — a different dimension of the story emerges. Warm, direct, and built on the same instinctive musicianship that's carried him across so many rooms. Whether driving a band from the backline, walking into a studio session, or holding a room on his own, his sound remains unmistakably his.</p>
+    <p>A lover of big hair, big beer, and big stages, Raymond Martin brings humor, grit, and undeniable talent everywhere he goes. He walks in a stranger and leaves as a friend — one groove, one laugh, and one unforgettable night at a time.</p>
+    <div class="bio-cta">
+      <div class="bio-cta-text"><strong>Available for session work.</strong> Based in Nashville, TN.</div>
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+    </div>
+  </div>
+</section>
 
 <section class="music" id="music">
   <div class="music-inner">
